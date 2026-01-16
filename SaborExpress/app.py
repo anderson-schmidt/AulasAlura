@@ -45,12 +45,12 @@ def opcao_invalida():
 def cadastrar_novo_restaurante():
     exibir_subtitulo("Cadastro de Novo Restaurante\n")
     nome_do_restaurante = input("Digite o nome do restaurante: ")
-    restaurantes.append(nome_do_restaurante)
+    categoria = input(f"Digite a categoria do restaurante {nome_do_restaurante}: ")
+    dados_restaurante = {'nome': nome_do_restaurante, 'categoria': categoria, 'ativo': False}
+    restaurantes.append(dados_restaurante)   # só adiciona o dicionário
     print(f"Restaurante {nome_do_restaurante} cadastrado com sucesso!")
     input("\nDigite uma tecla para voltar ao menu principal.")
     main()
-    print(f"\nRestaurante '{nome_do_restaurante}' cadastrado com sucesso!\n")
-    voltar_menu()
 
 def Mostrar_restaurantes():
     exibir_subtitulo("Lista de Restaurantes Cadastrados\n")
