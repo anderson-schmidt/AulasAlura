@@ -64,6 +64,29 @@ def Mostrar_restaurantes():
             print(f"{idx}. {nome_restaurante} | Categoria: {categoria_restaurante} | Ativo: {ativo_restaurante}")
     voltar_menu()
 
+def alternar_estado_restaurante():
+    exibir_subtitulo("Alterar Estado do Restaurante\n")
+    if not restaurantes:
+        print("Nenhum restaurante cadastrado.")
+        voltar_menu()
+    else:
+        for idx, restaurante in enumerate(restaurantes, start=1):
+            nome_restaurante = restaurante['nome']
+            ativo_restaurante = "Ativo" if restaurante['ativo'] else "Inativo"
+            print(f"{idx}. {nome_restaurante} | Ativo: {ativo_restaurante}")
+        try:
+            escolha = int(input("\nDigite o número do restaurante para alternar seu estado: "))
+            if 1 <= escolha <= len(restaurantes):
+                restaurantes[escolha - 1]['ativo'] = not restaurantes[escolha - 1]['ativo']
+                novo_estado = "Ativo" if restaurantes[escolha - 1]['ativo'] else "Inativo"
+                print(f"Estado do restaurante {restaurantes[escolha - 1]['nome']} alterado para {novo_estado}.")
+            else:
+                print("Número inválido. Tente novamente.")
+        except ValueError:
+            print("Entrada inválida. Por favor, digite um número.")
+    voltar_menu()
+    
+
 try:
     def escolher_opcao():
         opcao_escolhida = int(input("Escolha uma opção: "))
@@ -74,7 +97,7 @@ try:
             case 2:
                 Mostrar_restaurantes()
             case 3:
-                print("\nVocê escolheu ativar um restaurante.")
+                alternar_estado_restaurante()
             case 4:
                 finalizar_app()
             case _:
