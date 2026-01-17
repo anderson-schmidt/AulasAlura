@@ -5,6 +5,7 @@ restaurantes = [{'nome': 'Restaurante A', 'categoria': 'Italiana', 'ativo': True
                 {'nome': 'Restaurante C', 'categoria': 'Mexicana', 'ativo': True}]
 
 def exibir_titulo():
+    '''Função para exibir o título do aplicativo'''
     print ('''
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ─██████████████─██████████████─██████████████───██████████████─████████████████──────██████████████─████████──████████─██████████████─████████████████───██████████████─██████████████─██████████████─
@@ -21,10 +22,12 @@ def exibir_titulo():
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n''')
 
 def voltar_menu():
+    '''Função para voltar ao menu principal'''
     input("\n\nDigite uma tecla para voltar ao menu principal. ")
     main()
 
 def exibir_subtitulo(subtitulo):
+    '''Função para exibir subtítulos'''
     os.system('cls')
     linha = '*' * len(subtitulo)
     print(linha)
@@ -32,20 +35,31 @@ def exibir_subtitulo(subtitulo):
     print(linha + "\n")
 
 def exibir_menu():
+    '''Função para exibir o menu principal'''
     print("1. Cadastrar Restaurante")
     print("2. Listar Restaurante")
     print("3. Alterar Estado do Restaurante")
     print("4. Sair\n")
 
 def finalizar_app():
-
+    '''Função para finalizar o aplicativo'''
     exibir_subtitulo("Encerrando o SaborExpress...")
 
 def opcao_invalida():
+    '''Função para tratar opção inválida'''
     print("\nOpção inválida. Tente novamente.\n\n")
     voltar_menu()
 
 def cadastrar_novo_restaurante():
+    '''Função para cadastrar um novo restaurante
+    Inputs>
+        -  Nome do restaurante
+        -  Categoria
+
+    Output>
+        -  Adiciona o restaurante à lista de restaurantes
+
+    '''
     exibir_subtitulo("Cadastro de Novo Restaurante")
     nome_do_restaurante = input("Digite o nome do restaurante: ")
     categoria = input(f"Digite a categoria do restaurante {nome_do_restaurante}: ")
@@ -56,6 +70,7 @@ def cadastrar_novo_restaurante():
     main()
 
 def Mostrar_restaurantes():
+    '''Função para mostrar os restaurantes cadastrados'''
     exibir_subtitulo("Lista de Restaurantes Cadastrados")
     if not restaurantes:
         print("Nenhum restaurante cadastrado.")
@@ -70,6 +85,12 @@ def Mostrar_restaurantes():
     voltar_menu()
 
 def alternar_estado_restaurante():
+    '''Função para alterar o estado (ativo/inativo) de um restaurante
+    
+    inputs>
+        -  Número do restaurante na lista para alterar o estado
+    
+    '''
     exibir_subtitulo("Alterar Estado do Restaurante")
     if not restaurantes:
         print("Nenhum restaurante cadastrado.")
