@@ -26,24 +26,27 @@ def voltar_menu():
 
 def exibir_subtitulo(subtitulo):
     os.system('cls')
-    print(f"{subtitulo}\n")
+    linha = '*' * len(subtitulo)
+    print(linha)
+    print(subtitulo)
+    print(linha + "\n")
 
 def exibir_menu():
     print("1. Cadastrar Restaurante")
     print("2. Listar Restaurante")
-    print("3. Ativar Restaurante")
+    print("3. Alterar Estado do Restaurante")
     print("4. Sair\n")
 
 def finalizar_app():
 
-    exibir_subtitulo("Encerrando o SaborExpress...\n")
+    exibir_subtitulo("Encerrando o SaborExpress...")
 
 def opcao_invalida():
     print("\nOpção inválida. Tente novamente.\n\n")
     voltar_menu()
 
 def cadastrar_novo_restaurante():
-    exibir_subtitulo("Cadastro de Novo Restaurante\n")
+    exibir_subtitulo("Cadastro de Novo Restaurante")
     nome_do_restaurante = input("Digite o nome do restaurante: ")
     categoria = input(f"Digite a categoria do restaurante {nome_do_restaurante}: ")
     dados_restaurante = {'nome': nome_do_restaurante, 'categoria': categoria, 'ativo': False}
@@ -53,19 +56,21 @@ def cadastrar_novo_restaurante():
     main()
 
 def Mostrar_restaurantes():
-    exibir_subtitulo("Lista de Restaurantes Cadastrados\n")
+    exibir_subtitulo("Lista de Restaurantes Cadastrados")
     if not restaurantes:
         print("Nenhum restaurante cadastrado.")
     else:
+        print(f"{'NOME DO RESTAURANTE'.ljust(23)} | {'CATEGORIA'.ljust(31)} | {'STATUS'}")
+        print("-" * 75)
         for idx, restaurante in enumerate(restaurantes, start=1):
             nome_restaurante = restaurante['nome']
             categoria_restaurante = restaurante['categoria']
             ativo_restaurante = "Ativo" if restaurante['ativo'] else "Inativo"
-            print(f"{idx}. {nome_restaurante} | Categoria: {categoria_restaurante} | Ativo: {ativo_restaurante}")
+            print(f"{idx}. {nome_restaurante.ljust(20)} | Categoria: {categoria_restaurante.ljust(20)} | Ativo: {ativo_restaurante}")
     voltar_menu()
 
 def alternar_estado_restaurante():
-    exibir_subtitulo("Alterar Estado do Restaurante\n")
+    exibir_subtitulo("Alterar Estado do Restaurante")
     if not restaurantes:
         print("Nenhum restaurante cadastrado.")
         voltar_menu()
